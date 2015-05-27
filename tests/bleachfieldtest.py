@@ -19,12 +19,10 @@ class BleachFieldTest(unittest.TestCase):
     def test_nested_tags(self):
         test_bleach_field = BleachField()
 
-        html_nested = \
-            """<!DOCTYPE html><html><body><h1>My First Heading</h1>
-               <p>My first paragraph.</p></body></html>"""
-        html_nested_result = \
-            'My First Heading\n               My first paragraph.'
-
+        html_nested = ('<!DOCTYPE html><html><body><h1>My First Heading</h1> '
+          '<p>My first paragraph.</p></body></html>')
+        html_nested_result = 'My First Heading My first paragraph.'
+        
         self.assertEqual(
             test_bleach_field.clean_text(html_nested),
             html_nested_result
@@ -50,8 +48,8 @@ class BleachFieldTest(unittest.TestCase):
     def test_escape_and_bleach(self):
         test_bleach_field = BleachField()
 
-        html_with_escape_one = \
-            'Bleach is <example>&gt;</example> everything.'
+        html_with_escape_one = ('Bleach is <example>&gt; '
+            '</example> everything.')
         html_with_escape_one_result = 'Bleach is > everything.'
 
         html_with_escape_two = 'Good &amp<evil></evil> evil'
