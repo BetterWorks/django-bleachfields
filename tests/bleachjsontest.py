@@ -11,7 +11,7 @@ class BleachJSONTest(unittest.TestCase):
     def test_simple_JSON(self):
         test_bleach_json = BleachJSONField()
 
-        self.simple_json = {
+        simple_json = {
             'glossary': {
                 'title': 'example glossary',
                 'GlossDiv': {
@@ -35,7 +35,7 @@ class BleachJSONTest(unittest.TestCase):
             }
         }
 
-        self.simple_json_result = {
+        simple_json_result = {
             'glossary': {
                 'title': 'example glossary',
                 'GlossDiv': {
@@ -60,14 +60,14 @@ class BleachJSONTest(unittest.TestCase):
         }
 
         self.assertEqual(
-            test_bleach_json._bleach_walk(self.simple_json),
-            self.simple_json_result
+            test_bleach_json._bleach_walk(simple_json),
+            simple_json_result
         )
 
     def test_JSON_with_tags(self):
         test_bleach_json = BleachJSONField()
 
-        self.with_tags = {
+        with_tags = {
             'HTML': '<span>Tags are not allowed</span>',
             'More': {
                 'Nested': {
@@ -82,7 +82,7 @@ class BleachJSONTest(unittest.TestCase):
             }
         }
 
-        self.with_tags_result = {
+        with_tags_result = {
             'HTML': 'Tags are not allowed',
             'More': {
                 'Nested': {
@@ -98,14 +98,14 @@ class BleachJSONTest(unittest.TestCase):
         }
 
         self.assertEqual(
-            test_bleach_json._bleach_walk(self.with_tags),
-            self.with_tags_result
+            test_bleach_json._bleach_walk(with_tags),
+            with_tags_result
         )
 
     def test_nested_JSON(self):
         test_bleach_json = BleachJSONField()
 
-        self.nested_json = {
+        nested_json = {
             'Crazy': ['<crazy> </crazy>'],
             'Lists of dictionaries!': [
                 {'KPCB': ['<welcome> Fellows </welcome>']},
@@ -113,7 +113,7 @@ class BleachJSONTest(unittest.TestCase):
             ]
         }
 
-        self.nested_json_result = {
+        nested_json_result = {
             'Crazy': [' '],
             'Lists of dictionaries!': [
                 {'KPCB': [' Fellows ']},
@@ -122,8 +122,8 @@ class BleachJSONTest(unittest.TestCase):
         }
 
         self.assertEqual(
-            test_bleach_json._bleach_walk(self.nested_json),
-            self.nested_json_result
+            test_bleach_json._bleach_walk(nested_json),
+            nested_json_result
         )
 
 if __name__ == '__main__':
