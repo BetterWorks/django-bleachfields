@@ -1,0 +1,8 @@
+bleach==1.4.1
+Django==1.7.8
+flake8==2.4.0
+jsonfield==1.0.3
+mccabe==0.3
+pep8==1.5.7
+pyflakes==0.8.1
+tox==1.9.2
