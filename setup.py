@@ -4,7 +4,7 @@ except ImportError:
     from distutils.core import setup
 
 install_requires = [
-    'Django>=1.4.3,<1.8',
+    'Django>=1.4.3',
     'jsonfield>=1.0.3',
     'bleach>=1.4.1'
 ]
