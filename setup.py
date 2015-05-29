@@ -4,9 +4,9 @@ except ImportError:
     from distutils.core import setup
 
 install_requires = [
-    'Django==1.7.8',
-    'jsonfield==1.0.3',
-    'bleach==1.4.1'
+    'Django>=1.4.3',
+    'jsonfield>=1.0.3',
+    'bleach>=1.4.1'
 ]
 
 with open('README.rst') as f:
@@ -15,7 +15,7 @@ with open('README.rst') as f:
 
 setup(
     name='bleachfields',
-    version='1.0',
+    version='1.0.2',
     packages=['bleachfields'],
     license='MIT',
     description='Tools for bleaching text and JSON of HTML',
