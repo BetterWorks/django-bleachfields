@@ -1,7 +1,7 @@
 import unittest
 
-from django.conf import settings
 from bleachfields import BleachJSONField
+from django.conf import settings
 
 
 class BleachJSONTest(unittest.TestCase):
@@ -109,7 +109,7 @@ class BleachJSONTest(unittest.TestCase):
             'Crazy': ['<crazy> </crazy>'],
             'Lists of dictionaries!': [
                 {'KPCB': ['<welcome> Fellows </welcome>']},
-                {'Program': ['Hello &amp', '&gt; . &lt;']}
+                {'Program': ['Hello &amp;', '&gt; . &lt;']}
             ]
         }
 

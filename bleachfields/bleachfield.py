@@ -15,10 +15,8 @@ class BleachField(object):
 
     def clean_text(self, text):
         '''Clean text using bleach.'''
-        return self._clean_text(text, tuple(self.tags), self.strip)
-
-    @staticmethod
-    def _clean_text(text, tags, strip):
-        return BleachField._parser.unescape(
-            clean(text, tags=tags, strip=strip)
-        )
+        if text is None:
+            return ''
+        if '<' in text or '&lt' in text:
+            text = clean(text, tags=self.tags, strip=self.strip)
+        return self._parser.unescape(text)
