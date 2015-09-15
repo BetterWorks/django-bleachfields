@@ -15,7 +15,7 @@ with open('README.rst') as f:
 
 setup(
     name='bleachfields',
-    version='1.0.2',
+    version='1.0.3',
     packages=['bleachfields'],
     license='MIT',
     description='Tools for bleaching text and JSON of HTML',
