@@ -65,6 +65,15 @@ class BleachFieldTest(unittest.TestCase):
             html_with_escape_two_result
         )
 
+    def test_illegal_characters(self):
+        test_bleach_field = BleachField()
+
+        text_with_illegal = 'HelloWorld\0001\0102\0133\0144\0165\0376'
+        self.assertEqual(
+            test_bleach_field.clean_text(text_with_illegal),
+            'HelloWorld123456'
+        )
+
 
 if __name__ == '__main__':
     unittest.main()

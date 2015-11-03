@@ -1,6 +1,9 @@
+import re
 from HTMLParser import HTMLParser
 
 from bleach import clean
+
+ILLEGAL_CHARACTERS_RE = re.compile(r'[\000-\010]|[\013-\014]|[\016-\037]')
 
 
 class BleachField(object):
@@ -17,6 +20,7 @@ class BleachField(object):
         '''Clean text using bleach.'''
         if text is None:
             return ''
+        text = re.sub(ILLEGAL_CHARACTERS_RE, '', text)
         if '<' in text or '&lt' in text:
             text = clean(text, tags=self.tags, strip=self.strip)
         return self._parser.unescape(text)
