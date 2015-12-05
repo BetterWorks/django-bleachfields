@@ -1,7 +1,13 @@
 import re
-from HTMLParser import HTMLParser
+import six
 
 from bleach import clean
+
+if six.PY3:
+    from html.parser import HTMLParser
+else:
+    from HTMLParser import HTMLParser
+
 
 ILLEGAL_CHARACTERS_RE = re.compile(r'[\000-\010]|[\013-\014]|[\016-\037]')
 
