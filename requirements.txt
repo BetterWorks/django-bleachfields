@@ -1,5 +1,5 @@
 bleach==1.4.1
-Django==1.7.8
+Django==1.8.0
 flake8==2.4.0
 jsonfield==1.0.3
 mccabe==0.3
