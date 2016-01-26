@@ -10,7 +10,7 @@ class BleachJSONField(BleachField, JSONField):
         new_value = getattr(model_instance, self.attname)
         clean_value = self._bleach_walk(new_value)
         setattr(model_instance, self.attname, clean_value)
-        return clean_value
+        return super(BleachJSONField, self).pre_save(model_instance, add)
 
     def _bleach_walk(self, node):
         cleaned = node
