@@ -1,3 +1,4 @@
+import six
 from jsonfield import JSONField
 
 from .bleachfield import BleachField
@@ -13,11 +14,11 @@ class BleachJSONField(BleachField, JSONField):
 
     def _bleach_walk(self, node):
         cleaned = node
-        if isinstance(node, basestring):
+        if isinstance(node, six.string_types):
             cleaned = self.clean_text(node)
         elif isinstance(node, dict):
             cleaned = {}
-            for key, value in node.iteritems():
+            for key, value in node.items():
                 cleaned[self._bleach_walk(key)] = self._bleach_walk(value)
         elif isinstance(node, list):
             cleaned = [self._bleach_walk(element) for element in node]
