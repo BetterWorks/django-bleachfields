@@ -16,7 +16,7 @@ with open('README.rst') as f:
 
 setup(
     name='bleachfields',
-    version='1.0.5',
+    version='1.0.6',
     packages=['bleachfields'],
     license='MIT',
     description='Tools for bleaching text and JSON of HTML',
@@ -24,6 +24,7 @@ setup(
     author='Alex Francis',
     author_email='afrancis@betterworks.com',
     install_requires=install_requires,
+    url="https://github.com/BetterWorks/django-bleachfields/",
     test_suite='tests',
     classifiers=[
         'Intended Audience :: Developers',

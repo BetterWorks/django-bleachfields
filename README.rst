@@ -1,6 +1,6 @@
-=====
+===================
 django-bleachfields
-=====
+===================
 .. image:: https://travis-ci.org/BetterWorks/django-bleachfields.png
   :target: https://travis-ci.org/BetterWorks/django-bleachfields
 
