@@ -1,13 +1,7 @@
 import re
-import six
 
 from bleach import clean
-
-if six.PY3:
-    from html.parser import HTMLParser
-else:
-    from HTMLParser import HTMLParser
-
+from six.moves import html_parser
 
 ILLEGAL_CHARACTERS_RE = re.compile(r'[\000-\010]|[\013-\014]|[\016-\037]')
 
@@ -15,7 +9,7 @@ ILLEGAL_CHARACTERS_RE = re.compile(r'[\000-\010]|[\013-\014]|[\016-\037]')
 class BleachField(object):
 
     # Parser for unescaping HTML entities
-    _parser = HTMLParser()
+    _parser = html_parser.HTMLParser()
 
     def __init__(self, tags=(), strip=True, *args, **kwargs):
         super(BleachField, self).__init__(*args, **kwargs)

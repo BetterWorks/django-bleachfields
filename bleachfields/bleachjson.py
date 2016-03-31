@@ -18,7 +18,7 @@ class BleachJSONField(BleachField, JSONField):
             cleaned = self.clean_text(node)
         elif isinstance(node, dict):
             cleaned = {}
-            for key, value in node.items():
+            for key, value in six.iteritems(node):
                 cleaned[self._bleach_walk(key)] = self._bleach_walk(value)
         elif isinstance(node, list):
             cleaned = [self._bleach_walk(element) for element in node]
