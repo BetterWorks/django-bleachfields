@@ -1,7 +1,7 @@
 import re
 import sys
 
-from bleach import clean
+from bleach import clean, ALLOWED_ATTRIBUTES
 
 ILLEGAL_CHARACTERS_RE = re.compile(r'[\000-\010]|[\013-\014]|[\016-\037]')
 
@@ -18,10 +18,11 @@ class BleachField(object):
 
     # Parser for unescaping HTML entities
 
-    def __init__(self, tags=(), strip=True, *args, **kwargs):
+    def __init__(self, tags=(), strip=True, attributes=ALLOWED_ATTRIBUTES, *args, **kwargs):
         super(BleachField, self).__init__(*args, **kwargs)
         self.strip = strip
         self.tags = tags
+        self.attributes = attributes
 
     def clean_text(self, text):
         '''Clean text using bleach.'''
@@ -29,6 +30,6 @@ class BleachField(object):
             return ''
         text = re.sub(ILLEGAL_CHARACTERS_RE, '', text)
         if '<' in text or '&lt' in text:
-            text = clean(text, tags=self.tags, strip=self.strip)
+            text = clean(text, tags=self.tags, strip=self.strip, attributes=self.attributes)
 
         return unescape(text)
