@@ -6,7 +6,7 @@ except ImportError:
 install_requires = [
     'Django>=1.8.0',
     'jsonfield>=1.0.3',
-    'bleach>=1.4.1',
+    'bleach>=1.4.3',
     'six>=1.9.0'
 ]
 
@@ -16,7 +16,7 @@ with open('README.rst') as f:
 
 setup(
     name='bleachfields',
-    version='1.0.6',
+    version='1.0.7',
     packages=['bleachfields'],
     license='MIT',
     description='Tools for bleaching text and JSON of HTML',
@@ -31,7 +31,6 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
     ]
