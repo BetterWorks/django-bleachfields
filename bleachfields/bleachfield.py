@@ -28,8 +28,8 @@ class BleachField(object):
         '''Clean text using bleach.'''
         if text is None:
             return ''
+        text = unescape(text)
         text = re.sub(ILLEGAL_CHARACTERS_RE, '', text)
-        if '<' in text or '&lt' in text:
+        if '<' in text:
             text = clean(text, tags=self.tags, strip=self.strip, attributes=self.attributes)
-
-        return unescape(text)
+        return text
