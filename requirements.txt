@@ -1,7 +1,7 @@
-bleach==1.4.3
-Django==1.11.28
+bleach>=3.0.0
+Django>=3.2
 flake8==2.4.0
-jsonfield==1.0.3
+jsonfield>=3.0.0
 mccabe==0.3
 pep8==1.5.7
 pyflakes==0.8.1
